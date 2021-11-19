@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Hello, Alex</h1>
+    <script src="https://cdn.ethers.io/lib/ethers-5.1.umd.min.js" type="text/javascript">
+    </script>
+	  <script type="text/javascript" src="./redstoneFlashStorage.js"></script>
+    <script type="text/javascript" src="./ethers-utils.js"></script>
+    <script>
+      console.log({ethers, redstoneFlashStorage, tokenContractInstance}); // tokenContractInstance is created in ethers-utils.js
+
+      const wrappedContract = redstoneFlashStorage.WrapperBuilder
+        .wrapLite(tokenContractInstance)
+        .usingPriceFeed("redstone-stocks");
+      
+      console.log({wrappedContract});
+
+      const REDSTONE_DEV_ADDRESS = "0xD372947F3D0E308C9f77ae76f1eb4C94e6388a5d";
+
+      // Running a standard balanceOf function
+      wrappedContract.balanceOf(REDSTONE_DEV_ADDRESS).then(balance => {
+        console.log("Got balance:", balance.toString());
+      });
+
+      // Running a function that requires redstone data
+      wrappedContract.solvencyOf(REDSTONE_DEV_ADDRESS).then(solvency => {
+        console.log("Got solvency: ", solvency.toNumber() / 10 + "%");
+      });
+    </script>
+  </body>
+</html>
