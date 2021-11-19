@@ -1,6 +1,6 @@
 # browserify-redstone-flash-storage
 
-This repo contains a very simple example is using redstone-flash-storage module along with ethers.js in a pure HTML-JS application.
+This repo contains a very simple example of using redstone-flash-storage module along with ethers.js in a pure HTML-JS application.
 
 ## How to use
 
@@ -20,11 +20,8 @@ You can simply open the html file in browser or use a tool like [http-server](ht
 
 ```
 {ethers: {…}, redstoneFlashStorage: {…}, tokenContractInstance: Contract}
-
 {wrappedContract: Contract}
-
 Got balance: 99900000000000000
-
 Got solvency:  172.7%
 ```
 
